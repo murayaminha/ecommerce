@@ -31,21 +31,21 @@ public class ProductController {
     }
 
 
-    @GetMapping("/product-id")
-    public ResponseEntity findById(@PathParam("id") Long id) {
-        return ResponseEntity.ok().body(productRepository.findById(id));
+    @GetMapping("/product-id/{codProduct}")
+    public ResponseEntity findById(@PathVariable("codProduct") Long codProduct) {
+        return ResponseEntity.ok().body(productRepository.findByCodProduct(codProduct));
     }
 
     @GetMapping("/product-id-description")
 
-    public ResponseEntity<List<Product>> findByIdDescrition(@PathParam("id") Long id,
+    public ResponseEntity<List<Product>> findByIdDescrition(@PathParam("codProduct") Long codProduct,
                                                             @PathParam("description") String description){
        List<Product> products = new ArrayList<>();
 
-        if (id != null && description != null){
-            products = productRepository.findByCodProductAndDescription(id,description);
-        }else if(id != null){
-            products.add(productRepository.findById(id).get());
+        if (codProduct != null && description != null){
+            products = productRepository.findByCodProductAndDescription(codProduct,description);
+        }else if(codProduct != null){
+            products.add(productRepository.findById(codProduct).get());
         }else if(description != null){
             products = productRepository.findByDescription(description);
         }
