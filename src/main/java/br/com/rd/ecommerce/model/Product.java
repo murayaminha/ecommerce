@@ -21,6 +21,12 @@ public class Product {
     @Column(name="ds_product", nullable = false)
     private String description;
 
+    @Column(name="ds_name")
+    private String name;
+
+    @Column(name="ds_image")
+    private String image;
+
     @ManyToOne
     @JoinColumn(name = "CD_CATEGORY")
     private Category category;
