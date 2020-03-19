@@ -1,5 +1,6 @@
 package br.com.rd.ecommerce.Controller;
 
+import br.com.rd.ecommerce.model.Category;
 import br.com.rd.ecommerce.model.Product;
 import br.com.rd.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,4 +85,8 @@ public class ProductController {
         return productRepository.save(productEntity);
     }
 
+    @GetMapping("/product-category/{category}")
+    public List<Product> findByCategory(@PathVariable("category")Category category){
+        return productRepository.findByCategory(category);
+    }
 }
