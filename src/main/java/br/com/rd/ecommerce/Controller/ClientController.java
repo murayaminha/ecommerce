@@ -19,9 +19,12 @@ public class ClientController {
         return clientRepository.save(client);
     };
 
-
     @GetMapping("/find-client/list")
     public List<Client> find() {
         return clientRepository.findAll();
     }
+
+    @GetMapping ("/find-client/{mail}")
+    public  Client find(@PathVariable("mail")String mail ){return clientRepository.findByMail(mail);}
+
 }

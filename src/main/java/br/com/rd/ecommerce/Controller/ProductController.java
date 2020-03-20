@@ -26,6 +26,7 @@ public class ProductController {
     }
 
 
+
     @GetMapping("/find-product")
     public ResponseEntity <List<Product>> findProducts(){
         return ResponseEntity.ok().body(productRepository.findAll());
