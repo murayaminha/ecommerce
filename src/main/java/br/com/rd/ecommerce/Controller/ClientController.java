@@ -38,7 +38,8 @@ public class ClientController {
                                      @PathVariable("password") String password) {
         try {
             Client client = clientRepository.findByMail(mail);
-            if (client != null && client.getPassword()==password){
+            if (client != null && client.getPassword().equals(password)){
+                System.out.println(client);
                 return ResponseEntity.ok().body(client);
             } else {
                 return ResponseEntity.ok().body("Email ou/e senha incorretos");
@@ -49,9 +50,4 @@ public class ClientController {
         }
     }
 
-    @PostMapping("/teste/{mail}")
-    public ResponseEntity fazerLogin(@PathVariable("mail") String mail){
-        Client client = clientRepository.findByMail(mail);
-        return ResponseEntity.ok().body(client);
-    }
     }
