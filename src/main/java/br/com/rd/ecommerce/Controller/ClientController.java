@@ -33,12 +33,12 @@ public class ClientController {
     @GetMapping("find-lastClient")
     public Long findLast(){return clientRepository.max();}
 
-    @PostMapping("/login/{mail}/{password}")
-    public ResponseEntity fazerLogin(@PathVariable("mail") String mail,
-                                     @PathVariable("password") String password) {
+    @PostMapping("/login")
+    public ResponseEntity  fazerLogin(@RequestBody() Client user){
+
         try {
-            Client client = clientRepository.findByMail(mail);
-            if (client != null && client.getPassword().equals(password)){
+             Client client = clientRepository.findByMail(user.getMail());
+            if (client != null && client.getPassword().equals(user.getPassword())){
                 System.out.println(client);
                 return ResponseEntity.ok().body(client);
             } else {
