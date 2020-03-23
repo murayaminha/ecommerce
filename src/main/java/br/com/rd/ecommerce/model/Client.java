@@ -22,7 +22,6 @@ public class Client {
     @NotNull
     @Column(name = "ds_name")
     private  String name;
-
     @NotNull
     @Column(name = "ds_cpf")
     private String cpf;
