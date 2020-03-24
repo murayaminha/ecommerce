@@ -22,13 +22,13 @@ public class ItemCart {
     @Column(name="vl_freight")
     private BigDecimal valueFreight;
 
-    @Column(name="amount")
+    @Column(name="ds_amount")
     private  Integer amount;
 
     @Column(name="cd_product")
     private Integer codProduct;
 
     @ManyToOne
-    @JoinColumn(name = "request_id")
+    @JoinColumn(name = "id_request")
     private Request request;
 }

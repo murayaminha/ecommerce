@@ -17,15 +17,15 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "ds_name")
     private String name;
 
-    @Column(name = "mail")
+    @Column(name = "ds_mail")
     private String mail;
 
-    @Column(name = "subject")
+    @Column(name = "ds_subject")
     private String subject;
 
-    @Column(name = "text")
+    @Column(name = "ds_text")
     private String text;
 }

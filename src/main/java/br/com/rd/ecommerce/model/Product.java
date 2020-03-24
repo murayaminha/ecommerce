@@ -41,10 +41,6 @@ public class Product {
     private String model;
 
     @ManyToOne
-    @JoinColumn(name = "stock")
-    private Stock stock;
-
-    @ManyToOne
     @JoinColumn(name = "invoiceProducts_id")
     private InvoiceProducts invoiceProducts;
 

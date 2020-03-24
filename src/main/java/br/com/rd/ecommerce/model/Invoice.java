@@ -16,12 +16,8 @@ public class Invoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
+    @Column (name = "id_invoice")
     private Long id;
 
-    @OneToOne(mappedBy = "invoice")
-    private InvoiceProducts invoiceProducts;
 
-    @OneToOne(mappedBy = "invoice")
-    private Movement movement;
 }

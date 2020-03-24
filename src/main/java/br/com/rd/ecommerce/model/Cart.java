@@ -17,6 +17,7 @@ public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cart")
     private Integer codRequest;
 
     @Column(name="dt_request")
@@ -24,7 +25,7 @@ public class Cart {
     private Date dtRequest;
 
     @ManyToOne
-    @JoinColumn(name="client_id")
+    @JoinColumn(name="id_client")
     private Client client;
 
     @Column(name = "vl_request")

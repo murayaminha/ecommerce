@@ -12,13 +12,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="tb_client", uniqueConstraints ={@UniqueConstraint( columnNames = "ds_mail", name = "ds_cpf")}    )
+@Table(name="tb_client", uniqueConstraints ={@UniqueConstraint( columnNames = "ds_mail"),
+                                            @UniqueConstraint(columnNames = "ds_cpf")}
+    )
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_client")
     private Long idClient;
-
     @NotNull
     @Column(name = "ds_name")
     private  String name;

@@ -20,10 +20,11 @@ public class Stock {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "movement_id")
+    @JoinColumn(name = "id_movement")
     private Movement movement;
 
-    @OneToMany(mappedBy = "stock")
+    @OneToMany
+    @JoinColumn(name = "id_product")
     private List<Product> product;
 }
 

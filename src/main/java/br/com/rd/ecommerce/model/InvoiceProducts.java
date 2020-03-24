@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="invoiceProducts")
+@Table(name="tb_invoiceProducts")
 
 public class InvoiceProducts implements Serializable {
 
@@ -21,10 +21,11 @@ public class InvoiceProducts implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "invoice_id", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "id_invoice")
     private Invoice invoice;
 
-    @OneToMany(mappedBy = "invoiceProducts")
+    @OneToMany
+    @JoinColumn(name = "id_product")
         private List<Product> product;
 }

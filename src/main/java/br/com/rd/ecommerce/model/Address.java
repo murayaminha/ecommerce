@@ -25,7 +25,6 @@ public class Address {
     @NotNull
     @Column(name="ds_zipCode")
     private String zipCode;
-
     @Column( name="ds_complement")
     private String complement;
     @NotNull
@@ -41,8 +40,4 @@ public class Address {
     private String neighborhood;
 //    @OneToMany(mappedBy = "address")
 //    private List<ClientAddress> clientAddress;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "provider_id", referencedColumnName = "id")
-    private Provider provider;
 }
