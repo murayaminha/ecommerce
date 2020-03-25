@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,10 @@ public class AddressController {
     @PersistenceContext
     private EntityManager em;
     @ResponseStatus(HttpStatus.CREATED)
+
+    @PostMapping("/create-address/")
+    public Address save(@RequestBody Address address){
+        return addressRepository.save(address);}
 
     @PostMapping("/create-address/{id}")
     public ResponseEntity<Object> save(@RequestBody Address address,

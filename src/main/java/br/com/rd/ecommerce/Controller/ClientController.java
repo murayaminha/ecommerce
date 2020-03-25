@@ -1,6 +1,10 @@
 package br.com.rd.ecommerce.Controller;
+import br.com.rd.ecommerce.model.Address;
 import br.com.rd.ecommerce.model.Client;
+import br.com.rd.ecommerce.model.ClientAddress;
+import br.com.rd.ecommerce.repository.AddressRepository;
 import br.com.rd.ecommerce.repository.ClientRepository;
+import br.com.rd.ecommerce.repository.ClienteAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +19,15 @@ import java.util.List;
 public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    private ClienteAddressRepository clienteAddressRepository;
+    @Autowired
+    private AddressRepository addressRepository;
     @ResponseStatus(HttpStatus.CREATED)
 
     @PostMapping("/create-client")
-    public Client save(@RequestBody Client client){
-        return clientRepository.save(client);
+    public ResponseEntity save(@RequestBody Client client){
+        return ResponseEntity.ok().body(clientRepository.save(client));
     };
 
     @GetMapping("/find-client/list")

@@ -17,6 +17,7 @@ public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_stock")
     private Long id;
 
     @ManyToOne

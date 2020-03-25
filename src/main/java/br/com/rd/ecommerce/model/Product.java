@@ -41,7 +41,7 @@ public class Product {
     private String model;
 
     @ManyToOne
-    @JoinColumn(name = "invoiceProducts_id")
+    @JoinColumn(name = "id_invoice_products")
     private InvoiceProducts invoiceProducts;
 
 }

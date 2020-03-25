@@ -19,6 +19,7 @@ public class InvoiceProducts implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_invoice_products")
     private Long id;
 
     @OneToOne

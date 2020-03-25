@@ -1,11 +1,14 @@
 package br.com.rd.ecommerce.Controller;
 
+import br.com.rd.ecommerce.model.Address;
 import br.com.rd.ecommerce.model.Client;
 import br.com.rd.ecommerce.model.ClientAddress;
+import br.com.rd.ecommerce.repository.AddressRepository;
 import br.com.rd.ecommerce.repository.ClientRepository;
 import br.com.rd.ecommerce.repository.ClienteAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +19,22 @@ public class ClientAddressController {
 
     @Autowired
     private ClienteAddressRepository repository;
+    @Autowired
+    private ClientRepository clientRepository;
+    @Autowired
+    private AddressRepository addressRepository;
     @ResponseStatus(HttpStatus.CREATED)
 
     @PostMapping("/create-client-address")
-    public ClientAddress save(@RequestBody ClientAddress clientAddress){
-        return repository.save(clientAddress);
+    public ResponseEntity save(@RequestBody ClientAddress clientAddress){
+        clientAddress.setClient(clientRepository.save(clientAddress.getClient()));
+        clientAddress.setAddress(addressRepository.save(clientAddress.getAddress()));
+        repository.save(clientAddress);
+        return ResponseEntity.ok().body(clientAddress.getClient());
     };
+//    public ClientAddress save(@RequestBody ClientAddress clientAddress){
+//        return repository.save(clientAddress);
+//    };
 
     @GetMapping("/find-client-address/list")
     public List<ClientAddress> find() {

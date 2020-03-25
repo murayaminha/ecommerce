@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="invoice")
+@Table(name="tb_invoice")
 public class Invoice {
 
     @Id

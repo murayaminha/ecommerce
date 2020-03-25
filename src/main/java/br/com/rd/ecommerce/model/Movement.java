@@ -17,6 +17,7 @@ public class Movement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_movement")
     private Long id;
 
     @OneToOne
