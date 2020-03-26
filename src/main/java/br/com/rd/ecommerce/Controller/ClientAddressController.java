@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,7 @@ public class ClientAddressController {
     @ResponseStatus(HttpStatus.CREATED)
 
     @PostMapping("/create-client-address")
-    public ResponseEntity save(@RequestBody ClientAddress clientAddress){
+    public ResponseEntity save(@Valid @RequestBody ClientAddress clientAddress){
         clientAddress.setClient(clientRepository.save(clientAddress.getClient()));
         clientAddress.setAddress(addressRepository.save(clientAddress.getAddress()));
         repository.save(clientAddress);

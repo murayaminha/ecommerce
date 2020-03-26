@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +24,7 @@ public class Client {
     private Long idClient;
     @NotNull
     @Column(name = "ds_name")
+    @NotBlank(message = "nome não pode ser branco")
     private  String name;
     @NotNull
     @Column(name = "ds_cpf")
@@ -30,6 +33,7 @@ public class Client {
     @Column(name = "dt_birth")
     private Date birthDate;
     @NotNull
+    @Email
     @Column(name="ds_mail")
     private  String mail;
     @NotNull

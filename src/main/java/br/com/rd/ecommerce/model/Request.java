@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +22,10 @@ public class Request {
             private BigDecimal price;
     @Column(name="price_freight")
             private BigDecimal priceFreight;
+    @Column(name = "ds_status_request")
+    private String statusRequest;
+    @Column(name = "dt_date")
+    private Date date;
     @ManyToOne
     @JoinColumn(name = "id_client")
     private Client client;

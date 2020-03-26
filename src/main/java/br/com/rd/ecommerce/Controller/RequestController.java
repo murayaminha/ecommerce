@@ -20,23 +20,23 @@ public class RequestController {
     private RequestRepository repository;
 
 
-    @PostMapping("/repository")
+    @PostMapping("/request")
     public Request save(@RequestBody Request request){
         return repository.save(request);
     }
 
 
-    @GetMapping("/repository/{id}")
+    @GetMapping("/request/{id}")
     public Request findId(@PathVariable("id") Long id) { return repository.findById(id).get();
     }
 
 
-    @DeleteMapping("/repository")
+    @DeleteMapping("/request")
     public void deletById(@PathVariable("id") Long id){
         repository.deleteById(id);
     }
 
-    @PostMapping
+    @PostMapping("/acompanhar")
     public ResponseEntity<List<Request>> acompanhar(@RequestBody() Client user){
             List request = repository.findByClient(user);
                 return ResponseEntity.ok().body(request);
