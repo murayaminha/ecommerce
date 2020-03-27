@@ -1,6 +1,7 @@
 package br.com.rd.ecommerce.Controller;
 
 import br.com.rd.ecommerce.model.Category;
+import br.com.rd.ecommerce.model.Product;
 import br.com.rd.ecommerce.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,10 @@ public class CategoryController {
     public Category findByIdCategory(@PathParam("id") Long id){
         return categoryRepository.findById(id).get();
     }
+
+
+    @GetMapping("/category/list")
+    public List<Category> find(){ return categoryRepository.findAll();}
 
     @DeleteMapping("/category/{id}")
     public void deletById(@PathVariable("id") Long id){

@@ -26,10 +26,12 @@ public class ProductController {
     }
 
 
+
     @GetMapping("/find-product")
     public ResponseEntity <List<Product>> findProducts(){
         return ResponseEntity.ok().body(productRepository.findAll());
     }
+
 
     @GetMapping("/find-product/list")
     public List<Product> find(){ return productRepository.findAll();
@@ -84,6 +86,7 @@ public class ProductController {
         productEntity.setModel(product.getModel());
         return productRepository.save(productEntity);
     }
+
 
     @GetMapping("/product-category/{category}")
     public List<Product> findByCategory(@PathVariable("category")Category category){
