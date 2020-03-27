@@ -7,6 +7,7 @@ import br.com.rd.ecommerce.repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class ProviderController {
 
 
     @PostMapping("/provider")
-    public Provider save(@RequestBody Provider provider){
+    public Provider save(@Valid @RequestBody Provider provider){
         return repository.save(provider);
     }
 
