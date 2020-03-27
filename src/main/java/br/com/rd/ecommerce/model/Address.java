@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
-import java.util.List;
+
 
 @Data
 @NoArgsConstructor
@@ -18,14 +17,14 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name ="id_address")
+    private Long idAddress;
     @NotNull
     @Column(name ="ds_logradouro")
     private String logradouro;
     @NotNull
     @Column(name="ds_zipCode")
     private String zipCode;
-
     @Column( name="ds_complement")
     private String complement;
     @NotNull
@@ -36,12 +35,9 @@ public class Address {
     private String state;
     @NotNull
     @Column (name="ds_city", nullable = false)
-        private  String city;
-
+    private  String city;
+    @Column(name = "neighborhood")
+    private String neighborhood;
 //    @OneToMany(mappedBy = "address")
 //    private List<ClientAddress> clientAddress;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "provider_id", referencedColumnName = "id")
-    private Provider provider;
 }

@@ -11,17 +11,19 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="provider")
+@Table(name="tb_provider")
 public class Provider  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_provider")
     private Long id;
     @Column(name="name")
     private String name;
     @Column(name = "cnpj")
     private String cnpj;
-    @OneToOne(mappedBy = "provider")
+    @OneToOne
+    @JoinColumn(name = "id_address")
     private Address address;
 
 }

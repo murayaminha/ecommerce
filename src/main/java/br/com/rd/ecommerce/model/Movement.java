@@ -12,22 +12,21 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="movement")
+@Table(name="tb_movement")
 public class Movement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_movement")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "invoice_id", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "id_invoice")
     private Invoice invoice;
 
 
     @Column (name = "ds_type")
     private Boolean type;
 
-    @OneToMany (mappedBy = "movement")
-    private List<Stock> stock;
 
 }

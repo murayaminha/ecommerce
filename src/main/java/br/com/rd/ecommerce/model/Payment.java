@@ -11,16 +11,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="payment")
+@Table(name="tb_payment")
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id_payment")
     private Long id;
 
     @Column (name="ds_status")
     private String status;
 
-    @OneToOne(mappedBy = "payment")
-    private Request request;
+
   }

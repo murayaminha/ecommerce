@@ -13,18 +13,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="invoiceProducts")
+@Table(name="tb_invoiceProducts")
 
 public class InvoiceProducts implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_invoice_products")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "invoice_id", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "id_invoice")
     private Invoice invoice;
 
-    @OneToMany(mappedBy = "invoiceProducts")
+    @OneToMany
+    @JoinColumn(name = "id_product")
         private List<Product> product;
 }

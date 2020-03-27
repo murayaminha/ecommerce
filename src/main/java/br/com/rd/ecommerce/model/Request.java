@@ -6,27 +6,32 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="request")
+@Table(name="tb_request")
 public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_request")
     private Long id;
     @Column(name="price")
             private BigDecimal price;
     @Column(name="price_freight")
             private BigDecimal priceFreight;
+    @Column(name = "ds_status_request")
+    private String statusRequest;
+    @Column(name = "dt_date")
+    private Date date;
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "id_client")
     private Client client;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "request", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "id_payment")
     private Payment payment;
 
 

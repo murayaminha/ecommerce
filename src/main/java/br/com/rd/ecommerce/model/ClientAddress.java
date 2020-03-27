@@ -16,13 +16,14 @@ import java.io.Serializable;
 public class ClientAddress implements Serializable {
 
     @Id
-    @Column(name="client_address")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_client_address")
     private Long clienteAddress;
 
 @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Client client;
 @ManyToOne
-    @JoinColumn(name ="id")
+    @JoinColumn(name ="id_address")
     private Address address;
 }

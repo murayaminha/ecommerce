@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -11,17 +13,18 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="tb_client")
+@Table(name="tb_client", uniqueConstraints ={@UniqueConstraint( columnNames = "ds_mail"),
+                                            @UniqueConstraint(columnNames = "ds_cpf")}
+    )
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_client")
-    private Long id;
-
+    private Long idClient;
     @NotNull
     @Column(name = "ds_name")
+    @NotBlank(message = "nome não pode ser branco")
     private  String name;
-
     @NotNull
     @Column(name = "ds_cpf")
     private String cpf;
@@ -29,6 +32,7 @@ public class Client {
     @Column(name = "dt_birth")
     private Date birthDate;
     @NotNull
+    @Email
     @Column(name="ds_mail")
     private  String mail;
     @NotNull
@@ -36,7 +40,7 @@ public class Client {
     private String password;
     @NotNull
     @Column(name="nr_phone")
-    private Number phone;
+    private Integer phone;
 
 //    @OneToMany(mappedBy = "client")
 //    private List<ClientAddress> clientAddress;

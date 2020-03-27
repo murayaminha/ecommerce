@@ -17,13 +17,15 @@ public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_stock")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "movement_id")
+    @JoinColumn(name = "id_movement")
     private Movement movement;
 
-    @OneToMany(mappedBy = "stock")
+    @OneToMany
+    @JoinColumn(name = "id_product")
     private List<Product> product;
 }
 
