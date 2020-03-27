@@ -25,7 +25,7 @@ public class Stock {
     private Movement movement;
 
     @OneToMany
-    @JoinColumn(name = "id_product")
+    @JoinColumn(name = "code_product")
     private List<Product> product;
 }
 

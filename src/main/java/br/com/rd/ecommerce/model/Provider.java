@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
@@ -19,6 +20,7 @@ public class Provider  {
     @Column(name = "id_provider")
     private Long id;
     @Column(name="name")
+    @NotBlank(message = "nome não pode ser branco")
     private String name;
     @Column(name = "cnpj")
     private String cnpj;
