@@ -27,6 +27,6 @@ public class InvoiceProducts implements Serializable {
     private Invoice invoice;
 
     @OneToMany
-    @JoinColumn(name = "id_product")
+    @JoinColumn(name = "cod_product")
         private List<Product> product;
 }

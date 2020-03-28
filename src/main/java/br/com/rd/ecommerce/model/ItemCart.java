@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -25,8 +26,9 @@ public class ItemCart {
     @Column(name="ds_amount")
     private  Integer amount;
 
-    @Column(name="cd_product")
-    private Integer codProduct;
+    @OneToMany
+    @JoinColumn(name="cod_product")
+    private List<Product> codProduct;
 
     @ManyToOne
     @JoinColumn(name = "id_request")

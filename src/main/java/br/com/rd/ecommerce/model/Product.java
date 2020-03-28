@@ -16,6 +16,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_product")
     private Long codProduct;
 
     @Column(name="ds_product", nullable = false)
@@ -27,6 +28,8 @@ public class Product {
     @Column(name="ds_image")
     private String image;
 
+    @Column(name = "vl_productDiscount")
+    private BigDecimal valueDiscount;
     @ManyToOne
     @JoinColumn(name = "CD_CATEGORY")
     private Category category;
