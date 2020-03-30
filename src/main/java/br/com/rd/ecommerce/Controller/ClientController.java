@@ -57,5 +57,4 @@ public class ClientController {
             return ResponseEntity.badRequest().body(erro);
         }
     }
-
     }

@@ -31,8 +31,8 @@ public class AddressController {
     private EntityManager em;
     @ResponseStatus(HttpStatus.CREATED)
 
-    @PostMapping("/create-address/")
-    public Address save(@Valid @RequestBody Address address){
+    @PostMapping("/create-address")
+    public Address save(@RequestBody Address address){
         return addressRepository.save(address);}
 
 //    @PostMapping("/create-address/{id}")

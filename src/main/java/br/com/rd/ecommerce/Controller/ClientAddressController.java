@@ -27,7 +27,7 @@ public class ClientAddressController {
     @ResponseStatus(HttpStatus.CREATED)
 
     @PostMapping("/create-client-address")
-    public ResponseEntity save(@Valid @RequestBody ClientAddress clientAddress){
+    public ResponseEntity save(@RequestBody ClientAddress clientAddress){
         clientAddress.setClient(clientRepository.save(clientAddress.getClient()));
         clientAddress.setAddress(addressRepository.save(clientAddress.getAddress()));
         repository.save(clientAddress);
