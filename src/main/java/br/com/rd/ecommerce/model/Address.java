@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 
 @Data
@@ -19,22 +19,17 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id_address")
     private Long idAddress;
-    @NotNull
     @Column(name ="ds_logradouro")
     private String logradouro;
-    @NotNull
     @Column(name="ds_zipCode")
     private String zipCode;
     @Column( name="ds_complement")
     private String complement;
-    @NotNull
     @Column(name ="nr_number")
     private Integer number;
-    @NotNull
     @Column(name="ds_estate")
     private String state;
-    @NotNull
-    @Column (name="ds_city", nullable = false)
+    @Column (name="ds_city")
     private  String city;
     @Column(name = "neighborhood")
     private String neighborhood;

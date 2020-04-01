@@ -13,34 +13,24 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="tb_client", uniqueConstraints ={@UniqueConstraint( columnNames = "ds_mail"),
-                                            @UniqueConstraint(columnNames = "ds_cpf")}
-    )
+@Table(name="tb_client", uniqueConstraints ={@UniqueConstraint( columnNames = "ds_mail", name = "ds_cpf")} )
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_client")
     private Long idClient;
-    @NotNull
     @Column(name = "ds_name")
-    @NotBlank(message = "nome não pode ser branco")
     private  String name;
-    @NotNull
     @Column(name = "ds_cpf")
     private String cpf;
-    @NotNull
     @Column(name = "dt_birth")
     private Date birthDate;
-    @NotNull
-    @Email
     @Column(name="ds_mail")
     private  String mail;
-    @NotNull
     @Column(name="ds_password")
     private String password;
-    @NotNull
     @Column(name="nr_phone")
-    private Integer phone;
+    private String phone;
 
 //    @OneToMany(mappedBy = "client")
 //    private List<ClientAddress> clientAddress;

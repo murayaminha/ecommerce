@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,7 @@ public class AddressController {
     private EntityManager em;
     @ResponseStatus(HttpStatus.CREATED)
 
-    @PostMapping("/create-address/")
+    @PostMapping("/create-address")
     public Address save(@RequestBody Address address){
         return addressRepository.save(address);}
 
