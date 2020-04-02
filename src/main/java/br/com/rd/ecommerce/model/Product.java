@@ -37,6 +37,9 @@ public class Product {
     @Column(name = "vl_product", nullable = false)
     private BigDecimal valueProduct;
 
+    @Column(name = "vl_productDiscount")
+    private BigDecimal valueDiscount;
+
     @Column(name ="ds_brand")
     private String brand;
 

@@ -5,6 +5,7 @@ import br.com.rd.ecommerce.model.ClientAddress;
 import br.com.rd.ecommerce.repository.AddressRepository;
 import br.com.rd.ecommerce.repository.ClientRepository;
 import br.com.rd.ecommerce.repository.ClienteAddressRepository;
+import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,8 +50,15 @@ public class AddressController {
 //            return ResponseEntity.ok().body(clienteAddressRepository.save(clientAddress));
 //        }
 //    }
+
     @GetMapping("/find-address/list")
     public List<Address> find() {return addressRepository.findAll();}
+
+
+    @GetMapping("/find-address/{id}")
+    public ResponseEntity findAddressById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok().body(addressRepository.findById(id));
+    }
 
     @GetMapping("find-lastAddress")
     public Long findLast(){return addressRepository.max();}

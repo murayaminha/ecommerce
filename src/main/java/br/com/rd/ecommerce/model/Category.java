@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +19,8 @@ public class Category {
     @Column(name = "CD_CATEGORY")
     private Long id;
 
+    @Column(name="ds_image")
+    private String image;
 
     @Column(name = "ds_category" ,nullable = false)
     private String description;

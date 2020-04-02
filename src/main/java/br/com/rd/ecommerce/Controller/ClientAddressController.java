@@ -47,4 +47,9 @@ public class ClientAddressController {
         return repository.findAll();
     }
 
+    @GetMapping("/find-client-address/{id}")
+    public ResponseEntity<?> findId(@PathVariable("id") Long id) {
+    return ResponseEntity.ok().body(clientRepository.findById(id));
+    }
+
 }
