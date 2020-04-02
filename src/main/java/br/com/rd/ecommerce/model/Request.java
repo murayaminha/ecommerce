@@ -29,10 +29,17 @@ public class Request {
     @ManyToOne
     @JoinColumn(name = "id_client")
     private Client client;
-
     @OneToOne
     @JoinColumn(name = "id_payment")
     private Payment payment;
+    @Column(name = "ds_name_delivery")
+    private String name;
+    @Column(name = "telefone")
+    private String phone;
+    @OneToOne
+    @JoinColumn (name = "id_address")
+    private Address address;
+
 
 
 }

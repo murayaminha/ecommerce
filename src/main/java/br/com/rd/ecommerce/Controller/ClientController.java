@@ -43,7 +43,6 @@ public class ClientController {
 
     @PostMapping("/login")
     public ResponseEntity  fazerLogin(@RequestBody() Client user){
-
         try {
              Client client = clientRepository.findByMail(user.getMail());
             if (client != null && client.getPassword().equals(user.getPassword())){

@@ -11,10 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="tb_cart_item")
-
 public class ItemCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_cart_item")
     private Long code;
 
     @Column(name="vl_product")
@@ -26,9 +26,9 @@ public class ItemCart {
     @Column(name="ds_amount")
     private  Integer amount;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name="cod_product")
-    private List<Product> codProduct;
+    private Product codProduct;
 
     @ManyToOne
     @JoinColumn(name = "id_request")

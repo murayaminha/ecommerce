@@ -2,8 +2,10 @@ package br.com.rd.ecommerce.Controller;
 
 
 import br.com.rd.ecommerce.model.Client;
+import br.com.rd.ecommerce.model.ClientAddress;
 import br.com.rd.ecommerce.model.Payment;
 import br.com.rd.ecommerce.model.Request;
+import br.com.rd.ecommerce.repository.AddressRepository;
 import br.com.rd.ecommerce.repository.ClientRepository;
 import br.com.rd.ecommerce.repository.PaymentRepository;
 import br.com.rd.ecommerce.repository.RequestRepository;
@@ -15,16 +17,21 @@ import java.util.List;
 
 @RestController
 public class RequestController {
-
+    @Autowired
+    private ClientRepository clientRepository;
     @Autowired
     private RequestRepository repository;
-
+    @Autowired
+    private AddressRepository addressRepository;
+    @Autowired
+    private PaymentRepository paymentRepository;
 
     @PostMapping("/request")
     public Request save(@RequestBody Request request){
+        request.setAddress(addressRepository.save(request.getAddress()));
+        request.setPayment(paymentRepository.save(request.getPayment()));
         return repository.save(request);
     }
-
 
     @GetMapping("/request/{id}")
     public Request findId(@PathVariable("id") Long id) { return repository.findById(id).get();

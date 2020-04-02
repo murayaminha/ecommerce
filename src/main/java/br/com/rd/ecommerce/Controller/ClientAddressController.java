@@ -37,6 +37,11 @@ public class ClientAddressController {
 //        return repository.save(clientAddress);
 //    };
 
+    @PostMapping("find-Client-Address")
+    public ResponseEntity <?> find(@RequestBody Client client){
+        return ResponseEntity.ok().body(repository.findByClient(client).getAddress());
+    }
+
     @GetMapping("/find-client-address/list")
     public List<ClientAddress> find() {
         return repository.findAll();
