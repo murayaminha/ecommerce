@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
 
 
 @EnableWebSecurity
@@ -19,27 +20,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http //HttpSecurity
-                // nao bloqueia o banco com o XFRAME
-
-                .headers()
-                .frameOptions()
-                .sameOrigin()
-                .and()
                 //Pedir que todas as rotas sejam autorizadas
+               .cors().configurationSource(request-> new CorsConfiguration().applyPermitDefaultValues()).and()
+
                 .authorizeRequests()
+
 
                 .antMatchers("/login").hasAnyRole("USER", "ADMIN")
 
-                //Tirar a sessao da aplicação.
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
-                //Ligar Config do HTTP Basic
+                // nao bloqueia o banco com o XFRAME
+                .headers()
+                .frameOptions()
+                .disable()
                 .and()
+                //Tirar a sessao da aplicação.
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                //Ligar Config do HTTP Basic
                 .httpBasic()
                 //Desabilitar o CSRF token
                 .and()
                 .csrf().disable();
+
 
     }
 
