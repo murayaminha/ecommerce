@@ -21,21 +21,14 @@ public class Contact {
     private Long id;
 
     @Column(name = "ds_name")
-    @NotBlank(message = "nome não pode ser branco")
-    @NotNull
-    private String name;
+      private String name;
 
     @Column(name = "ds_mail")
-    @NotBlank(message = "email não pode ser branco")
-    @NotNull
-    @Email
-    private String mail;
+      private String mail;
 
     @Column(name = "ds_subject")
     private String subject;
 
     @Column(name = "ds_text")
-    @NotNull
-    @NotBlank(message = "texto não pode ser branco")
-    private String text;
+      private String text;
 }
