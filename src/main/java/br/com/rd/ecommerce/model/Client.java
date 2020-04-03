@@ -32,6 +32,7 @@ public class Client {
     @Column(name="nr_phone")
     private String phone;
 
+
 //    @OneToMany(mappedBy = "client")
 //    private List<ClientAddress> clientAddress;
 
