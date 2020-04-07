@@ -24,7 +24,7 @@ public class ContactController {
 //        return repository.save(contact);   }
 
     @PostMapping("/create-contact")
-    public Contact save(@Valid @RequestBody Contact contact){
+    public Contact save(@RequestBody Contact contact){
         return repository.save(contact);
     };
 }

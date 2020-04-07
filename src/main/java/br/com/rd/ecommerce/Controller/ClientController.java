@@ -30,6 +30,12 @@ public class ClientController {
         return ResponseEntity.ok().body(clientRepository.save(client));
     };
 
+    @PostMapping("/esquecisenha")
+    public ResponseEntity recuperar(@RequestBody String mail){
+        Client client = clientRepository.findByMail(mail);
+        return ResponseEntity.ok().body(client.getPassword());
+    }
+
     @GetMapping("/find-client/list")
     public List<Client> find() {
         return clientRepository.findAll();
