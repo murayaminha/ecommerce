@@ -42,9 +42,4 @@ public class Product {
 
     @Column(name = "ds_model")
     private String model;
-
-    @ManyToOne
-    @JoinColumn(name = "id_invoice_products")
-    private InvoiceProducts invoiceProducts;
-
 }

@@ -63,6 +63,24 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/product-orderName")
+    public List<Product> findOrderName(){
+        return productRepository.findByOrderByName();
+    }
+
+    @GetMapping("/product-orderPrice")
+    public List<Product> findOrderPrice(){
+        return productRepository.findByOrderByValueProduct();
+    }
+    @GetMapping("/product-orderNameDesc")
+    public List<Product> findOrderNameDesc(){
+        return productRepository.findByOrderByNameDesc();
+    }
+
+    @GetMapping("/product-orderPriceDesc")
+    public List<Product> findOrderPriceDesc(){
+        return productRepository.findByOrderByValueProductDesc();
+    }
 
     @GetMapping("/product-description/{description}")
     public List<Product> findByDescription(@PathVariable("description") String description){

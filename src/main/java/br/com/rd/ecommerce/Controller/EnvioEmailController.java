@@ -29,7 +29,6 @@ public class EnvioEmailController {
             helper.setText("<p>Olá!<br> <br>Você solicitou a recuperação de senha!</p>Sua senha é: "
                     +client.getPassword()+"<p>Caso não tenha solicitado, nós responda neste email</p>", true);
             mailSender.send(mail);
-
              return  ResponseEntity.ok().body("email enviado");
         } catch (Exception e) {
             e.printStackTrace();

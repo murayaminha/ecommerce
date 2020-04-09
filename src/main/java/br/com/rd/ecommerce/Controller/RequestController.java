@@ -28,16 +28,12 @@ public class RequestController {
 
     @PostMapping("/request")
     public Request save(@RequestBody Request request){
-        request.setAddress(addressRepository.save(request.getAddress()));
         request.setPayment(paymentRepository.save(request.getPayment()));
         return repository.save(request);
     }
-
     @GetMapping("/request/{id}")
     public Request findId(@PathVariable("id") Long id) { return repository.findById(id).get();
     }
-
-
     @DeleteMapping("/request")
     public void deletById(@PathVariable("id") Long id){
         repository.deleteById(id);

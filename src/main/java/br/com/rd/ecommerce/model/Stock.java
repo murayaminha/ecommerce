@@ -27,5 +27,9 @@ public class Stock {
     @OneToMany
     @JoinColumn(name = "cod_product")
     private List<Product> product;
+
+    @Column(name = "nr_amount_produt")
+    private Long amount;
+
 }
 

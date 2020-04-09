@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,10 +37,22 @@ public class ClientAddressController {
 //    public ClientAddress save(@RequestBody ClientAddress clientAddress){
 //        return repository.save(clientAddress);
 //    };
+    @PostMapping("/save-address")
+    public ResponseEntity salvarEndereco(@RequestBody ClientAddress clientAddress){
+        clientAddress.setAddress(addressRepository.save(clientAddress.getAddress()));
+        repository.save(clientAddress);
+        return ResponseEntity.ok().body(clientAddress.getAddress());
+    }
 
     @PostMapping("find-Client-Address")
-    public ResponseEntity <?> find(@RequestBody Client client){
-        return ResponseEntity.ok().body(repository.findByClient(client).getAddress());
+    public List<Address> find(@RequestBody Client client){
+        List<ClientAddress> listaClientes = repository.findByClient(client);
+        listaClientes.size();
+        List<Address> listaDeEndereco = new ArrayList<>();
+        for( int i=0; i<listaClientes.size();i++){
+           listaDeEndereco.add( listaClientes.get(i).getAddress());
+        }
+        return listaDeEndereco;
     }
 
     @GetMapping("/find-client-address/list")
@@ -51,5 +64,4 @@ public class ClientAddressController {
     public ResponseEntity<?> findId(@PathVariable("id") Long id) {
     return ResponseEntity.ok().body(clientRepository.findById(id));
     }
-
 }
