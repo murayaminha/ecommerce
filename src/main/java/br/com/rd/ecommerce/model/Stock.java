@@ -30,6 +30,5 @@ public class Stock {
 
     @Column(name = "nr_amount_produt")
     private Long amount;
-
 }
 

@@ -1,5 +1,6 @@
 package br.com.rd.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,8 +24,12 @@ public class Request {
             private BigDecimal price;
     @Column(name="price_freight")
             private BigDecimal priceFreight;
-    @Column(name = "ds_status_request")
-    private String statusRequest;
+
+    @OneToMany
+    @JsonManagedReference
+    @JoinColumn(name = "id_request")
+    private List<StatusRequest> statusRequest;
+
     @Column(name = "dt_date")
     private Date date;
     @ManyToOne

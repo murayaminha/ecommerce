@@ -87,7 +87,7 @@ public class ProductController {
         return productRepository.findByDescription(description);
     }
 
-    @DeleteMapping("/product")
+    @DeleteMapping("/product/{id}")
     public void deletById(@PathVariable("id") Long id){
         productRepository.deleteById(id);
     }

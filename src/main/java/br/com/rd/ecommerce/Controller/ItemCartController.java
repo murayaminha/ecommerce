@@ -2,10 +2,12 @@ package br.com.rd.ecommerce.Controller;
 
 
 import br.com.rd.ecommerce.model.ItemCart;
+import br.com.rd.ecommerce.model.Request;
 import br.com.rd.ecommerce.model.User;
 import br.com.rd.ecommerce.repository.ItemCartRepository;
 import br.com.rd.ecommerce.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,5 +26,9 @@ public class ItemCartController {
 
     @GetMapping("/find-itemcart/list")
     public List<ItemCart> find() {return itemCartRepository.findAll();
+    }
+    @GetMapping("/find-itemcart/{request}")
+    public ResponseEntity findByRequest(@PathVariable("request") Request request) {
+        return ResponseEntity.ok().body(itemCartRepository.findByRequest(request));
     }
 }
