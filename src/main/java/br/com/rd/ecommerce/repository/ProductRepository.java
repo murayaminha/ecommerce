@@ -18,6 +18,10 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> findByValueProduct (BigDecimal ValueProduct);
     List<Product> findByBrand(String Brand);
     List<Product> findByModel(String Model);
+    List<Product> findByOrderByName();
+    List<Product> findByOrderByNameDesc();
+    List<Product> findByOrderByValueProduct();
+    List<Product> findByOrderByValueProductDesc();
 
     public List<Product> findByCodProductAndDescription(Long codProduct,String description);
 }

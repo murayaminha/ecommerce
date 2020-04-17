@@ -12,6 +12,7 @@ import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @RestController
 
 public class ProductController {
@@ -63,13 +64,35 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/product-orderName")
+    public List<Product> findOrderName(){
+        return productRepository.findByOrderByName();
+    }
+
+    @GetMapping("/product-orderPrice")
+    public List<Product> findOrderPrice(){
+        return productRepository.findByOrderByValueProduct();
+    }
+
+    @GetMapping("/product-orderNameDesc")
+    public List<Product> findOrderNameDesc(){
+        return productRepository.findByOrderByNameDesc();
+    }
+
+    @GetMapping("/product-orderPriceDesc")
+    public List<Product> findOrderPriceDesc(){
+        return productRepository.findByOrderByValueProductDesc();
+    }
+
+
 
     @GetMapping("/product-description/{description}")
     public List<Product> findByDescription(@PathVariable("description") String description){
         return productRepository.findByDescription(description);
     }
 
-    @DeleteMapping("/product")
+
+    @DeleteMapping("/product/{id}")
     public void deletById(@PathVariable("id") Long id){
         productRepository.deleteById(id);
     }
@@ -81,6 +104,7 @@ public class ProductController {
         productEntity.setCategory(product.getCategory());
         productEntity.setCodProduct(product.getCodProduct());
         productEntity.setValueProduct(product.getValueProduct());
+        productEntity.setValueDiscount(product.getValueDiscount());
         productEntity.setDescription(product.getDescription());
         productEntity.setBrand(product.getBrand());
         productEntity.setModel(product.getModel());

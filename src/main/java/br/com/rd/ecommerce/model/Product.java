@@ -30,6 +30,7 @@ public class Product {
 
     @Column(name = "vl_productDiscount")
     private BigDecimal valueDiscount;
+
     @ManyToOne
     @JoinColumn(name = "CD_CATEGORY")
     private Category category;

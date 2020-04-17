@@ -22,7 +22,7 @@ public class Category {
     @Column(name="ds_image")
     private String image;
 
-    @Column(name = "ds_category" ,nullable = false)
+    @Column(name = "ds_category")
     private String description;
 
 
