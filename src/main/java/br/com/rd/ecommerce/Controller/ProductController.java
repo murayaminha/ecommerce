@@ -2,6 +2,7 @@ package br.com.rd.ecommerce.Controller;
 
 import br.com.rd.ecommerce.model.Category;
 import br.com.rd.ecommerce.model.Product;
+import br.com.rd.ecommerce.repository.ItemCartRepository;
 import br.com.rd.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,8 @@ public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private ItemCartRepository itemCartRepository;
 
 
     @PostMapping("/create-product")
@@ -110,4 +113,9 @@ public class ProductController {
     public List<Product> findByCategory(@PathVariable("category")Category category){
         return productRepository.findByCategory(category);
     }
+    @GetMapping("produtosMaisPedidos")
+    public List<?> buscarMaisPedidos(){
+        return itemCartRepository.findOrderRequest();
+    }
+
 }

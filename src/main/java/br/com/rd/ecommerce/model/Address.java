@@ -21,7 +21,7 @@ public class Address {
     private Long idAddress;
     @Column(name ="ds_logradouro")
     private String logradouro;
-    @Column(name="ds_zipCode")
+    @Column(name="ds_zip_code")
     private String zipCode;
     @Column( name="ds_complement")
     private String complement;

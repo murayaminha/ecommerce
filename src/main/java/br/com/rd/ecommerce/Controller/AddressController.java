@@ -62,4 +62,16 @@ public class AddressController {
 
     @GetMapping("find-lastAddress")
     public Long findLast(){return addressRepository.max();}
+    @PutMapping("/find-address/alter")
+    public Address alterar(@RequestBody Address address){
+        Address addressEntity = addressRepository.getOne(address.getIdAddress());
+        addressEntity.setCity(address.getCity());
+        addressEntity.setComplement(address.getComplement());
+        addressEntity.setLogradouro(address.getLogradouro());
+        addressEntity.setNeighborhood(address.getNeighborhood());
+        addressEntity.setNumber(address.getNumber());
+        addressEntity.setState(address.getState());
+        addressEntity.setZipCode(address.getZipCode());
+        return addressRepository.save(addressEntity);
+    }
 }

@@ -62,4 +62,15 @@ public class ClientController {
             return ResponseEntity.badRequest().body(erro);
         }
     }
+    @PutMapping("/client")
+    public Client alterar(@RequestBody Client client){
+        Client clientEntity = clientRepository.getOne(client.getIdClient());
+        clientEntity.setName(client.getName());
+        clientEntity.setCpf(client.getCpf());
+        clientEntity.setMail(client.getMail());
+        clientEntity.setPassword(client.getPassword());
+        clientEntity.setPhone(client.getPhone());
+        clientEntity.setBirthDate(client.getBirthDate());
+        return clientRepository.save(clientEntity);
+    }
     }

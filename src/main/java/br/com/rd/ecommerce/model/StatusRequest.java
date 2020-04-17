@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_statusRequest")
+@Table(name = "tb_status_request")
 public class StatusRequest {
 
     @Id
@@ -23,7 +23,7 @@ public class StatusRequest {
     @Column(name = "dt_date")
     private Date date;
 
-    @Column(name = "ds_StatusRequest")
+    @Column(name = "ds_Status_request")
     private String statusRequest;
     @ManyToOne
     @JsonBackReference
